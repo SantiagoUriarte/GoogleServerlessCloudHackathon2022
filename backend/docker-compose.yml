@@ -1,0 +1,10 @@
+version: "3"
+services:
+  santiservice:
+    build: ./santiservice
+    ports:
+      - "3001:3001"
+  testservice:
+    build: ./testservice
+    ports:
+      - "3002:3002"
