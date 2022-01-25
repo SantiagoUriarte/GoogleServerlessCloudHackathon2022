@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "dockerBuild": "docker build -t onespaceman/formservice ."
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,7 @@
     "express": "^4.17.2",
     "express-fileupload": "^1.2.1",
     "helmet": "^5.0.1",
+    "mongoose": "^6.1.8",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15"
   }

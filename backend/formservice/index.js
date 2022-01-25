@@ -10,7 +10,7 @@ const completePath = require("./src/Routes/completed");
 
 // Create Express app
 const app = express();
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
