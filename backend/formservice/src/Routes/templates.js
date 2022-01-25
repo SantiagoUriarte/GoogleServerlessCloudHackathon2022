@@ -5,6 +5,9 @@ const fileUpload = require("express-fileupload");
 const fs = require("fs");
 const ApiResponse = require("../Models/ApiResponse");
 
+/* Route responsible for endpoints relating to templates */
+
+// Set middleware
 router.use(
   fileUpload({
     createParentPath: true,

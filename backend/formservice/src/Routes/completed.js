@@ -5,6 +5,8 @@ const fileUpload = require("express-fileupload");
 const fs = require("fs");
 const ApiResponse = require("../Models/ApiResponse");
 
+/* Route responsible for endpoints relating to completed forms */
+
 // Create completed form
 router.post("/", (req, res) => {
   if (!req.files) {
