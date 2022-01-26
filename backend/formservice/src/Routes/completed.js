@@ -9,12 +9,11 @@ const ApiResponse = require("../Models/ApiResponse");
 
 // Create completed form
 router.post("/", (req, res) => {
+  const response = new ApiResponse(res);
+
   if (!req.files) {
     // Return error
-    res.status(400).json({
-      statusCode: 400,
-      message: "No files found",
-    });
+    response.badRequest400("No files found");
   }
 
   let file = req.files.file;
@@ -38,31 +37,33 @@ router.post("/", (req, res) => {
     template.save((err) => {
       if (err) {
         // return error
-        res.status(500).json({
-          statusCode: 500,
-          message: err,
-        });
+        response.serverError500(err);
       }
       // Return success
-      res.status(200).json({
-        statusCode: 200,
-        message: "successfully created completed form",
-      });
+      response.success200(
+        "successfully created completed form",
+        (data = [template])
+      );
     });
   });
 });
 
 // Get all completed forms
 router.get("/all", async (req, res) => {
+  const response = new ApiResponse(res);
+
   const templates = await Template.find({
     completed: true,
   });
 
-  res.status(200).json({
-    statusCode: 200,
-    message: "Successfully retrieved completed templates",
-    data: templates,
-  });
+  if (templates.length == 0) {
+    response.successNoContent202("No completed templates found");
+  }
+
+  response.success200(
+    (message = "Successfully retrieved completed templates"),
+    (data = templates)
+  );
 });
 
 module.exports = router;

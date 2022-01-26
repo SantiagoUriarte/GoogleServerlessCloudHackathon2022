@@ -4,6 +4,7 @@ const Template = require("../Models/Template");
 const fileUpload = require("express-fileupload");
 const fs = require("fs");
 const ApiResponse = require("../Models/ApiResponse");
+const { response } = require("express");
 
 /* Route responsible for endpoints relating to templates */
 
@@ -16,12 +17,10 @@ router.use(
 
 // Create template
 router.post("/", (req, res) => {
+  const response = new ApiResponse(res);
   if (!req.files) {
     // Return error
-    res.status(400).json({
-      statusCode: 400,
-      message: "No files found",
-    });
+    response.badRequest400("No files sent");
   }
 
   let file = req.files.file;
@@ -31,74 +30,67 @@ router.post("/", (req, res) => {
 
   fs.readFile(filepath, "utf8", (err, data) => {
     if (err) {
-      console.log(err);
-      res.json({ message: err });
+      response.serverError500(err);
     }
 
     const template = new Template({
       fileName: filename,
     });
 
+    console.log(data);
     template.fileData.data = data;
 
     template.save((err) => {
       if (err) {
         // return error
-        res.status(500).json({
-          statusCode: 500,
-          message: err,
-        });
+        response.serverError500(err);
       }
       // Return success
-      res.status(200).json({
-        statusCode: 200,
-        message: "successfully created template",
-      });
+      response.success200("Successfully created template", (data = [template]));
     });
   });
 });
 
 // Get a template
 router.get("/template/:id", async (req, res) => {
+  const response = new ApiResponse(res);
   console.log(req.query.id);
   const template = await Template.findById(req.params.id);
 
   if (!template) {
     // Return not found
-    res.status(404).json({
-      statusCode: 404,
-      message: "Template with Id not found",
-    });
+    response.notFound404("No template with Id found");
   }
 
-  res.status(200).json({
-    statusCode: 200,
-    message: "Successfully retrieved template",
-    data: [template],
-  });
+  response.success200(
+    (message = "Template with Id found"),
+    (data = [template])
+  );
 });
 
 // Get all templates
 router.get("/all", async (req, res) => {
+  const response = new ApiResponse(res);
   const templates = await Template.find({
     completed: false,
   });
 
-  res.status(200).json({
-    statusCode: 200,
-    message: "Successfully retrieved templates",
-    data: templates,
-  });
+  if (templates.length == 0) {
+    response.successNoContent202("No non-completed templates found");
+  }
+
+  response.success200(
+    (message = "Successfully found all non-completed templates"),
+    (data = templates)
+  );
 });
 
 // Delete a template
 router.delete("/template/:id", async (req, res) => {
+  const response = new ApiResponse(res);
   await Template.findByIdAndDelete(req.params.id);
 
-  res.status(200).json({
-    statusCode: 200,
-    message: "Successfully deleted template",
-  });
+  response.success200("Successfully deleted template");
 });
 
 module.exports = router;
