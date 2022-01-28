@@ -13,11 +13,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
-app.use(bodyParser.json());
+app.use(cors()); // Enable CORS so frontend can call backend
+app.use(bodyParser.json()); // Translates given data into json
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(morgan("dev"));
-app.use(helmet());
+app.use(morgan("dev")); // Give us better logs
+app.use(helmet()); // Set HTTP headers in responses so its secure
 
 // Set Routers
 app.use("/templates", templatePath);
