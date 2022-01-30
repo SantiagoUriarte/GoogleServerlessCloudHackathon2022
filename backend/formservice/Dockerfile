@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:14 
 
 WORKDIR /usr/src/app
 
@@ -8,6 +8,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3001
+EXPOSE 3002
 
 CMD ["npm", "start"]

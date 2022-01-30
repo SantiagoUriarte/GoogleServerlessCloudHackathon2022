@@ -1,7 +1,7 @@
 version: "3"
 services:
-  testservice:
-    build: ./testservice
+  formservice:
+    build: ./formservice
     ports:
       - "3002:3002"
   authenticationservice:

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "init": "docker-compose up"
+    "init": "docker-compose up",
+    "rebuild": "docker-compose build"
   },
   "author": "Santiago Uriarte",
   "license": "ISC"
