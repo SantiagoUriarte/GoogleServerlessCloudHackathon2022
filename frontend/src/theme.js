@@ -1,9 +1,9 @@
 import { createTheme } from "@mui/material/styles";
 
-const primary = "#042939";
-const secondary = "#C0C3A1";
-const defaultText = "#0F172A";
-const defaultBackground = "#F1F5F9";
+const primary = "#A6E5E1"; // Cyan
+const secondary = "#F5F9FF"; // Light blues
+const defaultText = "#F7F7F7"; // White
+const defaultBackground = "#323232"; // Dark grey
 
 export const theme = createTheme({
   palette: {
