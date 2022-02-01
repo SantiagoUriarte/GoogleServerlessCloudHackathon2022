@@ -3,9 +3,9 @@ import { createTheme } from "@mui/material/styles";
 const primary = "#A6E5E1"; // Cyan
 const secondary = "#F5F9FF"; // Light blues
 const defaultText = "#323232"; // Dark grey
-const defaultText2 = "#F7F7F7"; // Dark grey
+const defaultText2 = "#F7F7F7"; // White
 const defaultBackground = "#F7F7F7"; // White
-
+const defaultFont = "DM Sans";
 export const theme = createTheme({
   palette: {
     primary: {
@@ -24,6 +24,7 @@ export const theme = createTheme({
     },
   },
   typography: {
+    fontFamily: defaultFont,
     allVariants: {
       color: defaultText,
     },
