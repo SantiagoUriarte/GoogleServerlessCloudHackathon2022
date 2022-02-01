@@ -3,6 +3,9 @@ import React from "react";
 import ShowTemplatePage from "./pages/ShowTemplatePage/ShowTemplatePage";
 import BottomNavbar from "./components/BottomNavbar/BottomNavbar";
 import BottomNavbarSpacer from "./components/BottomNavbarSpacer/BottomNavbarSpacer";
+import LoginButton from "./components/LoginButton/LoginButton";
+import InputBox from "./components/InputBox/InputBox";
+import LoginWrapper from "./components/LoginWrapper/LoginWrapper";
 
 const containerStyle = {
   height: "100vh",
@@ -19,6 +22,7 @@ export default function App() {
       <ShowTemplatePage />
       {/* <BottomNavbarSpacer /> */}
       <BottomNavbar />
+      <LoginWrapper></LoginWrapper>
     </Container>
   );
 }
