@@ -4,3 +4,8 @@ services:
     build: ./formservice
     ports:
       - "3002:3002"
+  authenticationservice:
+    build: ./authenticationService
+    ports: 
+      - "3003:3003"
+
