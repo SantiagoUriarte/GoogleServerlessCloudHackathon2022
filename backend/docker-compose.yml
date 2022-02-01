@@ -6,6 +6,5 @@ services:
       - "3002:3002"
   authenticationservice:
     build: ./authenticationService
-    ports: 
+    ports:
       - "3003:3003"
-

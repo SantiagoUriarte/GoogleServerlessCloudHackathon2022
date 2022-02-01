@@ -1,11 +1,16 @@
-import { Button, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import React from "react";
+import ShowTemplatePage from "./pages/ShowTemplatePage/ShowTemplatePage";
+import BottomNavbar from "./components/BottomNavbar/BottomNavbar";
 
+const containerStyle = {
+  padding: 0,
+};
 export default function App() {
   return (
-    <Container>
-      <h1>Hello World</h1>
-      <Button variant="contained">Click me</Button>
+    <Container sx={containerStyle}>
+      <ShowTemplatePage />
+      <BottomNavbar />
     </Container>
   );
 }
