@@ -3,10 +3,8 @@ import React from "react";
 import NavbarItem from "../../components/NavbarItems/NavbarItem";
 
 const containerStyle = {
+  marginTop: "10px",
   width: "100vw",
-  position: "fixed",
-  bottom: 0,
-  left: 0,
 };
 
 const navbarStyle = {
@@ -16,22 +14,24 @@ const navbarStyle = {
   boxShadow: "0px -4px 8px rgba(0, 0, 0, 0.25)",
   borderRadius: "15px 15px 0px 0px",
   alignItems: "center",
-  zIndex: "0",
+  zIndex: "100",
+  backgroundColor: "#323232",
 };
 
 const bottomBoxStyle = {
   display: "flex",
   bottom: 0,
   height: "30px",
-  zIndex: "1",
+  zIndex: "200",
   alignItems: "center",
   justifyContent: "center",
+  backgroundColor: "#323232",
 };
 
 const decorationBoxStyle = {
   width: "134px",
   height: "5px",
-  zIndex: "2",
+  zIndex: "300",
   backgroundColor: "white",
   borderRadius: "10px",
 };

@@ -1,16 +1,23 @@
 import React from "react";
 import { Button, Box } from "@mui/material";
+import RecordBox from "../../components/RecordBox/RecordBox";
+import FormHeader from "../../components/FormHeader/FormHeader";
+import FormViewer from "../../components/FormViewer/FormViewer";
 
 const showTemplatePageStyle = {
-  height: "100%",
+  flexGrow: 1,
   width: "100%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
 };
 
 export default function ShowTemplatePage() {
   return (
     <Box sx={showTemplatePageStyle}>
-      <h1>Hello World</h1>
-      <Button variant="contained">Click me</Button>
+      <FormHeader title="New Form" />
+      <FormViewer style={{ marginTop: "-25px" }} />
+      <RecordBox />
     </Box>
   );
 }
