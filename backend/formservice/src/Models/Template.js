@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
  */
 const schema = mongoose.Schema(
   {
+    templateName: String,
     fileName: String,
     completed: { type: Boolean, default: false },
     fileData: { data: Buffer, contentType: String },

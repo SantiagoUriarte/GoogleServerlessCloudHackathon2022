@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, IconButton } from "@mui/material";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-
+import { Link as RouterLink } from "react-router-dom";
 const formHeaderStyle = {
   display: "flex",
   padding: "30px 0 30px 0",
@@ -26,6 +26,8 @@ export default function FormHeader({ style, title }) {
       }}
     >
       <IconButton
+        component={RouterLink}
+        to={"/testTemplates"}
         aria-label="delete"
         sx={{
           position: "absolute",

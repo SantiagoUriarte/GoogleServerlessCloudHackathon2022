@@ -17,6 +17,7 @@ router.post("/", (req, res) => {
   }
 
   let file = req.files.file;
+  let templateName = req.body.templateName;
   let filename = file.name;
   let filepath = "./uploads/" + filename;
   file.mv(filepath);
@@ -28,6 +29,7 @@ router.post("/", (req, res) => {
     }
 
     const template = new Template({
+      templateName: templateName,
       fileName: filename,
       completed: true,
     });

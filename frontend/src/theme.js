@@ -6,6 +6,7 @@ const defaultText = "#323232"; // Dark grey
 const defaultText2 = "#F7F7F7"; // White
 const defaultBackground = "#F7F7F7"; // White
 
+export const pageBackground = "#323232"; // Dark Grey
 export const defaultFont = "DM Sans";
 export const headerFont = "Urbanist";
 export const theme = createTheme({

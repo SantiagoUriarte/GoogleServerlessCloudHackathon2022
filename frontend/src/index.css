@@ -8,3 +8,7 @@ body,
   background-color: #323232;
   font-family: "Urbanist", sans-serif;
 }
+
+canvas {
+  display: none;
+}

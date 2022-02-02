@@ -2,10 +2,10 @@ import { Container } from "@mui/material";
 import React from "react";
 import ShowTemplatePage from "./pages/ShowTemplatePage/ShowTemplatePage";
 import BottomNavbar from "./components/BottomNavbar/BottomNavbar";
-import BottomNavbarSpacer from "./components/BottomNavbarSpacer/BottomNavbarSpacer";
 import LoginButton from "./components/LoginButton/LoginButton";
 import InputBox from "./components/InputBox/InputBox";
 import LoginWrapper from "./components/LoginWrapper/LoginWrapper";
+import { Outlet, Link } from "react-router-dom";
 
 const containerStyle = {
   height: "100vh",
@@ -14,12 +14,13 @@ const containerStyle = {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "space-between",
-  width: "100%",
+  width: "85%",
 };
 export default function App() {
   return (
     <Container sx={containerStyle}>
-      <ShowTemplatePage />
+      <h1 style={{ color: "white" }}>Header</h1>
+      <Outlet />
       <BottomNavbar />
     </Container>
   );

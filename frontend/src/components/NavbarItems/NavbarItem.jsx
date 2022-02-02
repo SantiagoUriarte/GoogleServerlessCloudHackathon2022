@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Button } from "@mui/material";
 
 const navbarItemStyle = {
   display: "flex",
@@ -19,7 +19,7 @@ const typographyStyle = {
 
 export default function NavbarItem({ Icon, color, style, label }) {
   return (
-    <Box
+    <Button
       sx={{
         ...navbarItemStyle,
         ...style,
@@ -29,6 +29,6 @@ export default function NavbarItem({ Icon, color, style, label }) {
       <Typography color={color} variant="h5" sx={typographyStyle}>
         {label}
       </Typography>
-    </Box>
+    </Button>
   );
 }

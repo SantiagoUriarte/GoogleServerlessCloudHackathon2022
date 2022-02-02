@@ -155,7 +155,9 @@ async function upload(req, res) {
 }
 
 // APP ROUTES
-
+app.get("/status", (req, res) => {
+  console.log("service is running");
+});
 // GET to get status
 app.get("/status/:operationsName", async (req, res) => {
   const name = req.params.operationsName;
