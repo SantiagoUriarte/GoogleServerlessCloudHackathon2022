@@ -1,11 +1,8 @@
 import { Container } from "@mui/material";
 import React from "react";
-import ShowTemplatePage from "./pages/ShowTemplatePage/ShowTemplatePage";
 import BottomNavbar from "./components/BottomNavbar/BottomNavbar";
-import LoginButton from "./components/LoginButton/LoginButton";
-import InputBox from "./components/InputBox/InputBox";
-import LoginWrapper from "./components/LoginWrapper/LoginWrapper";
 import { Outlet, Link, useNavigate } from "react-router-dom";
+import TemplatePage from "./pages/TemplatePage/TemplatePage";
 
 const containerStyle = {
   height: "100vh",
