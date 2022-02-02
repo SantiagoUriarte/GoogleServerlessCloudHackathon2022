@@ -8,7 +8,7 @@ const schema = mongoose.Schema(
   {
     templateName: String,
     fileName: String,
-    completed: { type: Boolean, default: false },
+    status: String, // Status can be: template(base form), pending, completed
     fileData: { data: Buffer, contentType: String },
   },
   { timestamps: true }

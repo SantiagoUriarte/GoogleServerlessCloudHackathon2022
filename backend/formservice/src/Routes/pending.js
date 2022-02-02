@@ -7,7 +7,7 @@ const ApiResponse = require("../Models/ApiResponse");
 
 /* Route responsible for endpoints relating to completed forms */
 
-// Create completed form
+// Create pending form
 router.post("/", (req, res) => {
   const response = new ApiResponse(res);
 
@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
     const template = new Template({
       templateName: templateName,
       fileName: filename,
-      status: "completed",
+      status: "pending",
     });
 
     template.fileData.data = data;
@@ -43,27 +43,27 @@ router.post("/", (req, res) => {
       }
       // Return success
       response.success200(
-        "successfully created completed form",
+        "successfully created pending form",
         (data = [template])
       );
     });
   });
 });
 
-// Get all completed forms
+// Get all pending forms
 router.get("/all", async (req, res) => {
   const response = new ApiResponse(res);
 
   const templates = await Template.find({
-    status: "completed",
+    status: "pending",
   });
 
   if (templates.length == 0) {
-    response.successNoContent202("No completed templates found");
+    response.successNoContent202("No pending templates found");
   }
 
   response.success200(
-    (message = "Successfully retrieved completed templates"),
+    (message = "Successfully retrieved pending templates"),
     (data = templates)
   );
 });

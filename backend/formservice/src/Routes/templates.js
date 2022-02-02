@@ -37,6 +37,7 @@ router.post("/", (req, res) => {
     const template = new Template({
       templateName: templateName,
       fileName: filename,
+      status: "template",
     });
 
     console.log(data);
@@ -70,11 +71,11 @@ router.get("/template/:id", async (req, res) => {
   );
 });
 
-// Get all templates
+// Get all non-completed templates
 router.get("/all", async (req, res) => {
   const response = new ApiResponse(res);
   const templates = await Template.find({
-    completed: false,
+    status: "template",
   });
 
   if (templates.length == 0) {
