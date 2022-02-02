@@ -16,7 +16,7 @@ export default function ShowTemplatePage() {
   return (
     <Box sx={showTemplatePageStyle}>
       <FormHeader title="New Form" />
-      <FormViewer style={{ marginTop: "-25px" }} />
+      <FormViewer />
       <RecordBox />
     </Box>
   );

@@ -7,10 +7,12 @@ const formViewerStyle = {
   justifyContent: "center",
   alignItems: "center",
   padding: "10px 0",
+  height: "40vh",
+  flexGrow: 1,
 };
 
 const viewerContainerStyle = {
-  height: "40vh",
+  height: "100%",
   width: "100%",
   position: "relative",
   border: "0.5em solid #ffffff",

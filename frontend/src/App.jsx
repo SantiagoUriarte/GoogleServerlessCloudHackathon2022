@@ -14,15 +14,13 @@ const containerStyle = {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "space-between",
-  width: "90%",
+  width: "100%",
 };
 export default function App() {
   return (
     <Container sx={containerStyle}>
       <ShowTemplatePage />
-      {/* <BottomNavbarSpacer /> */}
       <BottomNavbar />
-      <LoginWrapper></LoginWrapper>
     </Container>
   );
 }

@@ -4,10 +4,9 @@ import MicNoneOutlinedIcon from "@mui/icons-material/MicNoneOutlined";
 import { theme } from "../../theme.js";
 const recordBoxStyle = {
   display: "flex",
-  padding: "10px 0",
+  padding: "30px 0 30px 0",
   flexDirection: "column",
   alignItems: "center",
-  padding: 0,
 };
 
 const circleButtonStyle = {

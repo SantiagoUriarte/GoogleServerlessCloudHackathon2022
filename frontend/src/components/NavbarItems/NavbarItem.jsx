@@ -1,14 +1,23 @@
 import React from "react";
-import { Typography, Icon, Box } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 
 const navbarItemStyle = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  fontSize: "12px",
 };
 
-export default function NavbarItem({ icon, color, style, label }) {
+const iconStyle = {
+  fontSize: "20px",
+  margin: "5px 0",
+};
+
+const typographyStyle = {
+  fontSize: "10px",
+  fontWeight: 300,
+};
+
+export default function NavbarItem({ Icon, color, style, label }) {
   return (
     <Box
       sx={{
@@ -16,10 +25,8 @@ export default function NavbarItem({ icon, color, style, label }) {
         ...style,
       }}
     >
-      <Icon color={color} fontSize="medium">
-        {icon}
-      </Icon>
-      <Typography color={color} variant="inherit">
+      <Icon color={color} sx={iconStyle} />
+      <Typography color={color} variant="h5" sx={typographyStyle}>
         {label}
       </Typography>
     </Box>

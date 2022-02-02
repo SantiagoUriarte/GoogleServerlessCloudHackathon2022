@@ -5,7 +5,9 @@ const secondary = "#F5F9FF"; // Light blues
 const defaultText = "#323232"; // Dark grey
 const defaultText2 = "#F7F7F7"; // White
 const defaultBackground = "#F7F7F7"; // White
-const defaultFont = "DM Sans";
+
+export const defaultFont = "DM Sans";
+export const headerFont = "Urbanist";
 export const theme = createTheme({
   palette: {
     primary: {

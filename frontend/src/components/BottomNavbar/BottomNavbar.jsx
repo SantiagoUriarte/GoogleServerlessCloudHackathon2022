@@ -2,8 +2,12 @@ import { Box } from "@mui/material";
 import React from "react";
 import NavbarItem from "../../components/NavbarItems/NavbarItem";
 
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import RotateLeftOutlinedIcon from "@mui/icons-material/RotateLeftOutlined";
+import LibraryAddCheckOutlinedIcon from "@mui/icons-material/LibraryAddCheckOutlined";
+import FileCopyOutlinedIcon from "@mui/icons-material/FileCopyOutlined";
+
 const containerStyle = {
-  marginTop: "10px",
   width: "100vw",
 };
 
@@ -45,22 +49,23 @@ export default function BottomNavbar({ style }) {
       }}
     >
       <Box sx={navbarStyle}>
-        <NavbarItem color="secondary" icon="home_outlined" label="Home" />
+        <NavbarItem color="secondary" Icon={HomeOutlinedIcon} label="HOME" />
         <NavbarItem
           color="secondary"
-          icon="rotate_left_outlined"
-          label="Status"
+          Icon={RotateLeftOutlinedIcon}
+          label="STATUS"
         />
         <NavbarItem
           color="primary"
-          icon={"file_copy_outlined"}
-          label="Templates"
+          Icon={FileCopyOutlinedIcon}
+          label="TEMPLATES"
         />
         <NavbarItem
           color="secondary"
-          icon={"library_add_check_outlined"}
-          label="Forms"
+          Icon={LibraryAddCheckOutlinedIcon}
+          label="FORMS"
         />
+        
       </Box>
       <Box sx={bottomBoxStyle}>
         <Box sx={decorationBoxStyle}></Box>

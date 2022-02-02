@@ -4,17 +4,17 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 
 const formHeaderStyle = {
   display: "flex",
-  padding: "20px 0 10px 0",
+  padding: "30px 0 30px 0",
   alignItems: "center",
   justifyContent: "center",
 };
 
 const textStyle = {
-  fontSize: "40px",
+  fontSize: "25px",
 };
 
 const arrowIconStyle = {
-  fontSize: "48px",
+  fontSize: "35px",
 };
 
 export default function FormHeader({ style, title }) {
