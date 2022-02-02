@@ -2,23 +2,24 @@ import React from "react";
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-const SearchBox = () => {
+const SearchBox = ({ placeholder }) => {
   const searchBoxStyle = {
-    m: 1,
     width: "25ch",
     backgroundColor: "#F7F7F7",
     borderRadius: 30,
-    maxWidth: 311,
+    maxWidth: 375,
     width: "100%",
+    height: 40,
     "& .MuiOutlinedInput-root": {
       borderRadius: 30,
-      maxWidth: 311,
+      maxWidth: 375,
       width: "100%",
+      height: 40,
     },
   };
   return (
     <TextField
-      placeholder="Search"
+      placeholder={placeholder}
       id="outlined-start-adornment"
       sx={{
         ...searchBoxStyle,
