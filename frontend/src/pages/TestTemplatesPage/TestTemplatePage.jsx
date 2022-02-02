@@ -36,7 +36,7 @@ export default function TestTemplatePage() {
               </Button>
             );
           })
-        : "No Templates"}
+        : ""}
     </Box>
   );
 }
