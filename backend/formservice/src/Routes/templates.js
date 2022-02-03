@@ -25,7 +25,7 @@ router.post("/", (req, res) => {
   let file = req.files.file;
   let templateName = req.body.templateName;
   let filename = file.name;
-  let filepath = "./uploads/" + filename;
+  let filepath = "./tmp/" + filename;
   file.mv(filepath);
 
   fs.readFile(filepath, "utf8", (err, data) => {
