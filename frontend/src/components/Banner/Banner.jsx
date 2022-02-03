@@ -17,7 +17,6 @@ const Banner = ({
   const bannerWrapperStyle = {
     backgroundColor: "#A6E5E1",
     borderRadius: "0px 0px 10px 10px",
-    maxWidth: 375,
     width: "100%",
     height: 125,
     padding: "24px 32px 16px 32px",

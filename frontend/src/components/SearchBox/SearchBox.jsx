@@ -4,7 +4,6 @@ import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBox = ({ placeholder, input = false }) => {
   const searchBoxStyle = {
-    width: "25ch",
     backgroundColor: "#F7F7F7",
     borderRadius: 30,
     maxWidth: 375,

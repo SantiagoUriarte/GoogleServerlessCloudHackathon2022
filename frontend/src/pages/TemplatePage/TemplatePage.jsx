@@ -10,7 +10,6 @@ import TemplateArea from "./TemplateArea";
 import BottomNavBar from "../../components/BottomNavbar/BottomNavbar";
 const TemplatePage = () => {
   const templatePageStyle = {
-    maxWidth: 375,
     width: "100%",
     display: "flex",
     flexWrap: "wrap",
@@ -28,7 +27,6 @@ const TemplatePage = () => {
         style={{ marginBottom: "24px" }}
       ></Banner>
       <TemplateArea></TemplateArea>
-      <BottomNavBar></BottomNavBar>
     </Box>
   );
 };

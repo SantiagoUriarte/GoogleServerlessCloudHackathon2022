@@ -13,6 +13,7 @@ const containerStyle = {
   alignItems: "center",
   justifyContent: "space-between",
   width: "85%",
+  maxWidth: 375,
 };
 export default function App() {
   const navigate = useNavigate();
