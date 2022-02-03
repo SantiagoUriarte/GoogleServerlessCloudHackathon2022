@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
-import React from "react";
-import NavbarItem from "../../components/NavbarItems/NavbarItem";
+import React, { useState, useEffect } from "react";
+import NavbarItem from "../NavbarItem/NavbarItem";
 
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import RotateLeftOutlinedIcon from "@mui/icons-material/RotateLeftOutlined";
@@ -41,6 +41,9 @@ const decorationBoxStyle = {
 };
 
 export default function BottomNavbar({ style }) {
+  useEffect(() => {
+    console.log("Navbar has rendered");
+  }, []);
   return (
     <Box
       sx={{
@@ -49,23 +52,18 @@ export default function BottomNavbar({ style }) {
       }}
     >
       <Box sx={navbarStyle}>
-        <NavbarItem color="secondary" Icon={HomeOutlinedIcon} label="HOME" />
+        <NavbarItem Icon={HomeOutlinedIcon} label="HOME" to="/home" />
+        <NavbarItem Icon={RotateLeftOutlinedIcon} to="/status" label="STATUS" />
         <NavbarItem
-          color="secondary"
-          Icon={RotateLeftOutlinedIcon}
-          label="STATUS"
-        />
-        <NavbarItem
-          color="primary"
           Icon={FileCopyOutlinedIcon}
           label="TEMPLATES"
+          to="/testTemplates"
         />
         <NavbarItem
-          color="secondary"
           Icon={LibraryAddCheckOutlinedIcon}
           label="FORMS"
+          to="/forms"
         />
-        
       </Box>
       <Box sx={bottomBoxStyle}>
         <Box sx={decorationBoxStyle}></Box>

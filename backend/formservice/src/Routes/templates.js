@@ -4,7 +4,6 @@ const Template = require("../Models/Template");
 const fileUpload = require("express-fileupload");
 const fs = require("fs");
 const ApiResponse = require("../Models/ApiResponse");
-const { response } = require("express");
 
 /* Route responsible for endpoints relating to templates */
 
@@ -37,6 +36,7 @@ router.post("/", (req, res) => {
     const template = new Template({
       templateName: templateName,
       fileName: filename,
+      status: "template",
     });
 
     console.log(data);
@@ -70,11 +70,11 @@ router.get("/template/:id", async (req, res) => {
   );
 });
 
-// Get all templates
+// Get all non-completed templates
 router.get("/all", async (req, res) => {
   const response = new ApiResponse(res);
   const templates = await Template.find({
-    completed: false,
+    status: "template",
   });
 
   if (templates.length == 0) {

@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./theme.js";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import TestTemplatePage from "./pages/TestTemplatesPage/TestTemplatePage";
 import ShowTemplatePage from "./pages/ShowTemplatePage/ShowTemplatePage";
 
@@ -13,7 +13,20 @@ ReactDOM.render(
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <Routes>
-          <Route path="/" element={<App />}>
+          <Route path="/" element={<Navigate replace to="/home" />} />
+          <Route element={<App />}>
+            <Route
+              path="/home"
+              element={<h1 style={{ color: "white" }}>Home</h1>}
+            />
+            <Route
+              path="/status"
+              element={<h1 style={{ color: "white" }}>Status</h1>}
+            />
+            <Route
+              path="/forms"
+              element={<h1 style={{ color: "white" }}>Completed Forms</h1>}
+            />
             <Route path="/testTemplates" element={<TestTemplatePage />} />
             <Route
               path="/:templateId/:templateName"

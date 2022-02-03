@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const templatePath = require("./src/Routes/templates");
 const completePath = require("./src/Routes/completed");
+const pendingPath = require("./src/Routes/pending");
 
 // Create Express app
 const app = express();
@@ -22,6 +23,7 @@ app.use(helmet()); // Set HTTP headers in responses so its secure
 // Set Routers
 app.use("/templates", templatePath);
 app.use("/templates/completed", completePath);
+app.use("/templates/pending", pendingPath);
 
 //Status Check Route
 app.get("/status", (req, res) => {
