@@ -7,4 +7,4 @@ services:
   authenticationservice:
     build: ./authenticationService
     ports:
-      - "3003:3003"
+      - "3001:3001"

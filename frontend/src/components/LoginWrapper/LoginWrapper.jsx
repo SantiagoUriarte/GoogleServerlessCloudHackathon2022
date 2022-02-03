@@ -51,7 +51,12 @@ const LoginWrapper = () => {
           }}
         >
           <Typography
-            sx={{ fontFamily: "urbanist", fontSize: 36, fontWeight: 400 }}
+            sx={{
+              fontFamily: "urbanist",
+              fontSize: 36,
+              fontWeight: 400,
+              color: "white",
+            }}
           >
             inForm
           </Typography>
@@ -59,7 +64,7 @@ const LoginWrapper = () => {
       </Box>
       <Box sx={{ ...boxStyle }}>
         <Box sx={{ paddingBottom: 1 }}>
-          <Typography sx={{ fontSize: 13, paddingBottom: 1 }}>
+          <Typography sx={{ fontSize: 13, paddingBottom: 1, color: "white" }}>
             Email or Phone Number
           </Typography>
           <InputBox
@@ -69,7 +74,7 @@ const LoginWrapper = () => {
           ></InputBox>
         </Box>
         <Box sx={{ paddingBottom: 1 }}>
-          <Typography sx={{ fontSize: 13, paddingBottom: 1 }}>
+          <Typography sx={{ fontSize: 13, paddingBottom: 1, color: "white" }}>
             Password
           </Typography>
           <InputBox
@@ -78,7 +83,9 @@ const LoginWrapper = () => {
             style={{ paddingBottom: 2 }}
           ></InputBox>
         </Box>
-        <LoginButton onClick={login} sx={{ marginBottom: 2 }}>CONTINUE</LoginButton>
+        <LoginButton onClick={login} sx={{ marginBottom: 2 }}>
+          CONTINUE
+        </LoginButton>
 
         <Box sx={{ paddingBottom: 2 }}>
           <Typography sx={{ fontWeight: 400, fontSize: 11 }}>OR</Typography>
@@ -90,8 +97,8 @@ const LoginWrapper = () => {
           Continue with Apple
         </LoginButton>
         <hr style={{ maxWidth: 311, width: "100%" }}></hr>
-        <Typography sx={{ marginTop: 3, fontSize: 15 }}>
-          Create a New Account{" "}
+        <Typography sx={{ marginTop: 3, fontSize: 15, color: "white" }}>
+          Create a New Account
         </Typography>
       </Box>
     </Box>

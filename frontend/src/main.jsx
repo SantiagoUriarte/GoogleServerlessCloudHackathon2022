@@ -7,7 +7,7 @@ import { theme } from "./theme.js";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import TestTemplatePage from "./pages/TestTemplatesPage/TestTemplatePage";
 import ShowTemplatePage from "./pages/ShowTemplatePage/ShowTemplatePage";
-
+import TemplatePage from "./pages/TemplatePage/TemplatePage";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -17,7 +17,7 @@ ReactDOM.render(
           <Route element={<App />}>
             <Route
               path="/home"
-              element={<h1 style={{ color: "white" }}>Home</h1>}
+              element={<TemplatePage></TemplatePage>}
             />
             <Route
               path="/status"
