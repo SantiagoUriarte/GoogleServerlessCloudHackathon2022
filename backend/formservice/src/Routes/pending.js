@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Template = require("../Models/Template");
-const fileUpload = require("express-fileupload");
 const fs = require("fs");
 const ApiResponse = require("../Models/ApiResponse");
 

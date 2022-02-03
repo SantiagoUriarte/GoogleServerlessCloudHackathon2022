@@ -4,7 +4,6 @@ const Template = require("../Models/Template");
 const fileUpload = require("express-fileupload");
 const fs = require("fs");
 const ApiResponse = require("../Models/ApiResponse");
-const { response } = require("express");
 
 /* Route responsible for endpoints relating to templates */
 
