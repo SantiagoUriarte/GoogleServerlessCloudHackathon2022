@@ -1,12 +1,10 @@
 import { Container } from "@mui/material";
 import React from "react";
-import ShowTemplatePage from "./pages/ShowTemplatePage/ShowTemplatePage";
 import BottomNavbar from "./components/BottomNavbar/BottomNavbar";
-import LoginButton from "./components/LoginButton/LoginButton";
-import InputBox from "./components/InputBox/InputBox";
-import LoginWrapper from "./components/LoginWrapper/LoginWrapper";
 import { Outlet, Link, useNavigate } from "react-router-dom";
-
+import TemplatePage from "./pages/TemplatePage/TemplatePage";
+import Banner from "./components/Banner/Banner";
+import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 const containerStyle = {
   height: "100vh",
   padding: 0,
@@ -15,6 +13,7 @@ const containerStyle = {
   alignItems: "center",
   justifyContent: "space-between",
   width: "85%",
+  maxWidth: 375,
 };
 export default function App() {
   const navigate = useNavigate();
