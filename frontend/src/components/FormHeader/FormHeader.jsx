@@ -10,11 +10,11 @@ const formHeaderStyle = {
 };
 
 const textStyle = {
-  fontSize: "25px",
+  fontSize: "20px",
 };
 
 const arrowIconStyle = {
-  fontSize: "35px",
+  fontSize: "30px",
 };
 
 export default function FormHeader({ style, title }) {

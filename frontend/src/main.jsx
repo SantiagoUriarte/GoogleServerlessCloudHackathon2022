@@ -7,6 +7,7 @@ import { theme } from "./theme.js";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import TestTemplatePage from "./pages/TestTemplatesPage/TestTemplatePage";
 import ShowTemplatePage from "./pages/ShowTemplatePage/ShowTemplatePage";
+import CompletedFormsPage from "./pages/CompletedFormsPage/CompletedFormsPage";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -23,10 +24,7 @@ ReactDOM.render(
               path="/status"
               element={<h1 style={{ color: "white" }}>Status</h1>}
             />
-            <Route
-              path="/forms"
-              element={<h1 style={{ color: "white" }}>Completed Forms</h1>}
-            />
+            <Route path="/forms" element={<CompletedFormsPage />} />
             <Route path="/testTemplates" element={<TestTemplatePage />} />
             <Route
               path="/:templateId/:templateName"
