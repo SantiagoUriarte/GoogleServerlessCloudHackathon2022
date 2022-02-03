@@ -3,7 +3,8 @@ import React from "react";
 import BottomNavbar from "./components/BottomNavbar/BottomNavbar";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import TemplatePage from "./pages/TemplatePage/TemplatePage";
-
+import Banner from "./components/Banner/Banner";
+import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 const containerStyle = {
   height: "100vh",
   padding: 0,

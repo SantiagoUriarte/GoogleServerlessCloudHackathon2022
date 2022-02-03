@@ -12,6 +12,7 @@ const Banner = ({
   header,
   alt,
   description,
+  style,
 }) => {
   const bannerWrapperStyle = {
     backgroundColor: "#A6E5E1",
@@ -61,7 +62,7 @@ const Banner = ({
     descriptionStyle = { ...descriptionStyle, paddingBottom: 3 };
   }
   return (
-    <Box sx={{ ...bannerWrapperStyle }}>
+    <Box sx={{ ...bannerWrapperStyle, ...style }}>
       <Box sx={{ ...typographyAndIconStyle }}>
         {image !== "" && (
           <Avatar sx={{ ...avatarStyle }} alt={alt} src={image} />
