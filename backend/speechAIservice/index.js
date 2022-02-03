@@ -47,8 +47,8 @@ async function transcribe(uri) {
     uri: gcsUri,
   };
   const config = {
-    encoding: "FLAC",
-    sampleRateHertz: 44100,
+    encoding: "WEBM_OPUS",
+    sampleRateHertz: 48000,
     languageCode: "en-US",
   };
   const request = {

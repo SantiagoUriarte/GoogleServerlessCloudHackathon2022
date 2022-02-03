@@ -38,14 +38,31 @@ export default function RecordBox({ style }) {
 
   const submitRecording = (recordingBlob) => {
     console.log("Recording finished");
-    console.log(recordingBlob);
+    const audiofile = new File([recordingBlob.blob], "audiofile.webm", {
+      type: "audio/webm",
+    });
+    const fd = new FormData();
+    fd.append("file", audiofile);
 
-    const newFormName = prompt("Recording saved! Enter new file name");
-    if (newFormName == null || newFormName == "") {
-      alert("Invalid name!");
-    } else {
-      alert(`Transcription job started for file: ${newFormName}`);
-    }
+    fetch("http://127.0.0.1:3003/upload", {
+      headers: { Accept: "application/json" },
+      method: "POST",
+      body: fd,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    // const newFormName = prompt("Recording saved! Enter new file name");
+    // if (newFormName == null || newFormName == "") {
+    //   alert("Invalid name!");
+    // } else {
+    //   alert(`Transcription job started for file: ${newFormName}`);
+    // }
   };
   return (
     <Box sx={{ ...recordBoxStyle, ...style }}>
@@ -55,7 +72,7 @@ export default function RecordBox({ style }) {
         onStop={(recordingBlob) => submitRecording(recordingBlob)}
         backgroundColor={pageBackground}
         strokeColor={theme.palette.primary.main}
-        mimeType="audio/wav"
+        sampleRate={4800}
       />
       <Button
         onClick={toggleRecording}
