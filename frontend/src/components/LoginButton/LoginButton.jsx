@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Box } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import AppleIcon from "@mui/icons-material/Apple";
+import { Link } from "react-router-dom";
 
 const LoginButton = ({ children, icon, sx, variant, apple, auth, onClick }) => {
   let logo = <GoogleIcon></GoogleIcon>;
@@ -31,6 +32,8 @@ const LoginButton = ({ children, icon, sx, variant, apple, auth, onClick }) => {
 
   return (
     <Button
+      component={Link}
+      to={"/templates"}
       onClick={onClick}
       variant="contained"
       sx={{ ...buttonStyle, ...sx }}
