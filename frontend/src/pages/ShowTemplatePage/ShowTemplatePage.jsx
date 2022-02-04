@@ -22,7 +22,7 @@ export default function ShowTemplatePage() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   let params = useParams();
-
+  console.log(template);
   useEffect(() => {
     fetch(
       `https://formservice-aoy5jyfbiq-wl.a.run.app/templates/template/${params.templateId}`
@@ -43,7 +43,11 @@ export default function ShowTemplatePage() {
         <>
           <FormHeader title={params.templateName} />
           <FormViewer htmlSrc={htmlFormString} />
-          <RecordBox template={template}/>
+          {template.data[0].status != "template" ? (
+            ""
+          ) : (
+            <RecordBox template={template} />
+          )}
         </>
       ) : (
         ""
