@@ -5,6 +5,7 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const helmet = require("helmet");
+const speechAIPath = require("./Routes/speechAI");
 
 // Create Express app
 const app = express();
@@ -18,13 +19,13 @@ app.use(morgan("dev")); // Give us better logs
 app.use(helmet()); // Set HTTP headers in responses so its secure
 
 // Set Routers
+app.use("/api/speechAI/", speechAIPath);
 
-// Login 
-// Logout 
+// Login
+// Logout
 // Start Transcription
 // Get templates, pending forms, completed forms
-// Get template by Id 
-
+// Get template by Id
 
 //Status Check Route
 app.get("/status", (req, res) => {

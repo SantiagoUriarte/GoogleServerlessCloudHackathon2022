@@ -49,7 +49,10 @@ router.post("/", (req, res) => {
         return response.serverError500(err);
       }
       // Return success
-      return response.success200("Successfully created template", (data = [template]));
+      return response.success200(
+        "Successfully created template",
+        (data = [template])
+      );
     });
   });
 });
@@ -99,14 +102,13 @@ router.delete("/template/:id", async (req, res) => {
 // Write new data to template
 router.patch("/fileData/:id", async (req, res) => {
   console.log("hit new write data");
+  console.log(req.body);
   const response = new ApiResponse(res);
   const templateId = req.params.id;
   const newFormValues = req.body.formValues; // list of key value pairs
   const template = await Template.findById(templateId);
   const templateHtmlString = template.fileData.data.toString();
   const templateHtml = HTMLParser.parse(templateHtmlString);
-
-  console.log(templateHtmlString);
 
   newFormValues.forEach((element) => {
     try {
@@ -116,7 +118,7 @@ router.patch("/fileData/:id", async (req, res) => {
         .setAttribute("value", element.value);
       console.log("finished setting");
     } catch (err) {
-      response.badRequest400("Given input Ids were incorrect");
+      return response.badRequest400("Given input Ids were incorrect");
     }
   });
 
@@ -128,7 +130,9 @@ router.patch("/fileData/:id", async (req, res) => {
       if (err) {
         return response.serverError500("Could not save changes to Database");
       }
-      return response.success200("Successfully wrote new data");
+      return response.success200("Successfully wrote new data", [
+        templateHtmlString,
+      ]);
     }
   );
 });

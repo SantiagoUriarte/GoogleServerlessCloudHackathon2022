@@ -8,6 +8,32 @@ const { response } = require("express");
 
 /* Route responsible for endpoints relating to pending/completed forms */
 
+// Create pending form from templateId
+router.post("/template/:id", async (req, res) => {
+  try {
+    const response = new ApiResponse(res);
+    const newName = req.body.templateName;
+
+    const template = await Template.findById(req.params.id);
+    const pendingTemplate = new Template({
+      templateName: newName,
+      fileName: template.fileName,
+      status: "pending",
+    });
+
+    pendingTemplate.fileData.data = template.fileData.data;
+    await pendingTemplate.save();
+
+    return response.success200(
+      "Successfully created new pending form",
+      (data = [pendingTemplate])
+    );
+  } catch (err) {
+    console.log(err);
+    return response.serverError500(err);
+  }
+});
+
 // Create pending form
 router.post("/", (req, res) => {
   const response = new ApiResponse(res);
@@ -105,7 +131,7 @@ router.patch("/status/:id", async (req, res) => {
     if (err) {
       return response.serverError500(err);
     }
-    return response.success200("Successfully updated form");
+    return response.success200("Successfully updated form status");
   });
 });
 

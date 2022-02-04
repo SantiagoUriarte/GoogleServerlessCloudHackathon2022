@@ -131,8 +131,8 @@ async function upload(req, res) {
         // Make the file public
         await bucket.file(req.file.originalname).makePublic();
       } catch {
-        return res.status(500).json({
-          statusCode: 500,
+        return res.status(200).json({
+          statusCode: 200,
           message: `Uploaded the file successfully: ${req.file.originalname}, but public access is denied!`,
           url: publicUrl,
         });
@@ -194,6 +194,7 @@ app.post("/upload", async (req, res) => {
 // POST to start async transcription
 app.post("/startJob", async (req, res) => {
   // Get link to audio file
+  console.log(req.body);
   let uri = req.body.data.uri;
   const operationsName = await transcribe(uri);
 
