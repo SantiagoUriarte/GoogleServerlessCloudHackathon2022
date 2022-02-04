@@ -3,7 +3,7 @@ import { Button, Box } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import AppleIcon from "@mui/icons-material/Apple";
 
-const LoginButton = ({ children, icon, sx, variant, apple, auth }) => {
+const LoginButton = ({ children, icon, sx, variant, apple, auth, onClick }) => {
   let logo = <GoogleIcon></GoogleIcon>;
   if (apple) {
     logo = <AppleIcon></AppleIcon>;
@@ -30,7 +30,11 @@ const LoginButton = ({ children, icon, sx, variant, apple, auth }) => {
   }
 
   return (
-    <Button variant="contained" sx={{ ...buttonStyle, ...sx }}>
+    <Button
+      onClick={onClick}
+      variant="contained"
+      sx={{ ...buttonStyle, ...sx }}
+    >
       {icon && logo}
       {children}
     </Button>

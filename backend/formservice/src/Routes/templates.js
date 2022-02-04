@@ -82,13 +82,13 @@ router.get("/all", async (req, res) => {
   });
 
   if (templates.length == 0) {
-    return response.successNoContent202("No non-completed templates found");
+    response.successNoContent202("No non-completed templates found");
+  } else {
+    response.success200(
+      (message = "Successfully found all non-completed templates"),
+      (data = templates)
+    );
   }
-
-  return response.success200(
-    (message = "Successfully found all non-completed templates"),
-    (data = templates)
-  );
 });
 
 // Delete a template

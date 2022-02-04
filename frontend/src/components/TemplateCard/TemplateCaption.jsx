@@ -7,8 +7,11 @@ const TemplateCaption = ({ image, header, description, alt }) => {
     display: "flex",
     alignItems: "center",
     gap: "8px",
-    borderRadius: "0 0 10px 10px",
+    borderRadius: "0 0 20px 20px",
     padding: "8px",
+    "@media (max-width: 700px)": {
+      borderRadius: "0 0 10px 10px",
+    },
   };
   const avatarStyle = {
     width: 24,
@@ -16,13 +19,22 @@ const TemplateCaption = ({ image, header, description, alt }) => {
   };
   const templateCaptionHeaderStyle = {
     fontFamily: headerFont,
-    fontSize: 13,
-    fontWeight: 500,
+    textDecoration: "none",
+    fontSize: 16,
+    fontWeight: 600,
+    overflowWrap: "anywhere",
+    "@media (max-width: 700px)": {
+      fontSize: 13,
+    },
   };
   const templateCaptionSubtitleStyle = {
     fontFamily: headerFont,
-    fontSize: 10,
+    textDecoration: "none",
+    fontSize: 13,
     fontWeight: 400,
+    "@media (max-width: 700px)": {
+      fontSize: 10,
+    },
   };
 
   return (

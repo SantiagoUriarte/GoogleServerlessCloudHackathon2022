@@ -27,7 +27,7 @@ export default function FormHeader({ style, title }) {
     >
       <IconButton
         component={RouterLink}
-        to={"/testTemplates"}
+        to={"/templates"}
         aria-label="delete"
         sx={{
           position: "absolute",

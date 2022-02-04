@@ -14,10 +14,12 @@ const Banner = ({
   description,
   style,
 }) => {
+  const containerStyle = {
+    width: "100vw",
+  };
   const bannerWrapperStyle = {
     backgroundColor: "#A6E5E1",
     borderRadius: "0px 0px 10px 10px",
-    width: "100%",
     height: 125,
     padding: "24px 32px 16px 32px",
     display: "flex",
@@ -61,18 +63,20 @@ const Banner = ({
     descriptionStyle = { ...descriptionStyle, paddingBottom: 3 };
   }
   return (
-    <Box sx={{ ...bannerWrapperStyle, ...style }}>
-      <Box sx={{ ...typographyAndIconStyle }}>
-        {image !== "" && (
-          <Avatar sx={{ ...avatarStyle }} alt={alt} src={image} />
-        )}
-        <Box sx={{ ...typographyWrapperStyle }}>
-          <Typography sx={{ ...headerStyle }}>{header}</Typography>
-          <Typography sx={{ ...descriptionStyle }}>{description}</Typography>
+    <Box sx={{ ...containerStyle }}>
+      <Box sx={{ ...bannerWrapperStyle, ...style }}>
+        <Box sx={{ ...typographyAndIconStyle }}>
+          {image !== "" && (
+            <Avatar sx={{ ...avatarStyle }} alt={alt} src={image} />
+          )}
+          <Box sx={{ ...typographyWrapperStyle }}>
+            <Typography sx={{ ...headerStyle }}>{header}</Typography>
+            <Typography sx={{ ...descriptionStyle }}>{description}</Typography>
+          </Box>
+          <Icon />
         </Box>
-        <Icon />
+        <SearchBox placeholder={placeholder}></SearchBox>
       </Box>
-      <SearchBox placeholder={placeholder}></SearchBox>
     </Box>
   );
 };

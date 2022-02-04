@@ -59,7 +59,7 @@ app.post("/register", (req, res) => {
         accountLevel: req.body.accountLevel,
       });
       await newUser.save();
-      res.send("User Created");
+      res.status(205).send("User Created");
     }
   });
 });
@@ -70,7 +70,7 @@ app.post("/login", (req, res, next) => {
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
-        res.send("Successfully Authenticated");
+        res.status(200).send("Successfully Authenticated");
       });
     }
   })(req, res, next);
@@ -86,7 +86,7 @@ app.get("/user", (req, res) => {
 
 app.post("/logout", (req, res) => {
   req.logout();
-  res.send("Successfully Logged Out");
+  res.status(200).send("Successfully Logged Out");
 });
 
 // ------------------------------ End of Routes ------------------------------ //

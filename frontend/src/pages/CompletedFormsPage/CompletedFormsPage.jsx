@@ -35,13 +35,6 @@ export default function CompletedFormsPage() {
 
   return (
     <Box sx={formsPageStyle}>
-      <Banner
-        Icon={FileUploadOutlinedIcon}
-        placeholder="Search all forms"
-        header="Forms"
-        description={"See all your completed SMART forms here"}
-        style={{ marginBottom: "24px", position: "sticky" }}
-      />
       <Box sx={formDataCardListStyle}>
         {completedForms.map((completedForm) => {
           return (
