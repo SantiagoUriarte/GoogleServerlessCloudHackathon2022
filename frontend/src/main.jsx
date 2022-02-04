@@ -5,12 +5,11 @@ import App from "./App";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./theme.js";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import TestTemplatePage from "./pages/TestTemplatesPage/TestTemplatePage";
 import ShowTemplatePage from "./pages/ShowTemplatePage/ShowTemplatePage";
 import CompletedFormsPage from "./pages/CompletedFormsPage/CompletedFormsPage";
 import TemplatePage from "./pages/TemplatePage/TemplatePage";
 import StatusPage from "./pages/StatusPage/StatusPage";
-import LoginPage from './pages/LoginPage/LoginPage';
+import LoginPage from "./pages/LoginPage/LoginPage";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -25,7 +24,6 @@ ReactDOM.render(
               element={<h1 style={{ color: "white" }}>Homepage</h1>}
             />
             <Route path="/status" element={<StatusPage />} />
-            <Route path="/testTemplates" element={<TestTemplatePage />} />
             <Route
               path="/:templateId/:templateName"
               element={<ShowTemplatePage />}

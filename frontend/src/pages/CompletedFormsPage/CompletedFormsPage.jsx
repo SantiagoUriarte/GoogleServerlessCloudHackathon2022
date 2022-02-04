@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import FormDisplayCard from "../../components/FormDisplayCard/FormDisplayCard";
 import Banner from "../../components/Banner/Banner";
@@ -33,6 +33,28 @@ export default function CompletedFormsPage() {
     { templateId: 7, templateName: "Form 7", lastOpened: "9 mins ago" },
   ]);
 
+  useEffect(() => {
+    fetch(
+      "https://formservice-aoy5jyfbiq-wl.a.run.app/templates/forms/completed"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        data = data.data;
+        console.log(data);
+
+        const newCompletedForms = [];
+        data.forEach((completedForm) => {
+          newCompletedForms.push({
+            templateId: completedForm["_id"],
+            templateName: completedForm.templateName,
+            lastUpdatedAt: new Date(completedForm.updatedAt),
+          });
+        });
+        console.log(newCompletedForms);
+        setCompletedForms(newCompletedForms);
+      });
+  }, []);
+
   return (
     <Box sx={formsPageStyle}>
       <Box sx={formDataCardListStyle}>
@@ -41,7 +63,7 @@ export default function CompletedFormsPage() {
             <FormDisplayCard
               key={completedForm.templateId}
               title={completedForm.templateName}
-              subtitle={`Last Opened: ${completedForm.lastOpened}`}
+              subtitle={`Last updated: ${completedForm.lastUpdatedAt?.toLocaleDateString()}`}
             />
           );
         })}

@@ -8,6 +8,8 @@ const TemplateCard = ({ image, header, description, alt, to }) => {
     display: "flex",
     flexDirection: "column",
     textDecoration: "none",
+    backgroundColor: "white",
+    borderRadius: "10px",
   };
 
   return (

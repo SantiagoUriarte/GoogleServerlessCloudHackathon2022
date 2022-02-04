@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import form from "./exampleFormRestaurant.html?raw";
 
@@ -29,7 +29,7 @@ const viewerStyle = {
   border: 0,
 };
 
-export default function FormViewer({ style }) {
+export default function FormViewer({ style, htmlSrc }) {
   return (
     <Box
       sx={{
@@ -38,7 +38,7 @@ export default function FormViewer({ style }) {
       }}
     >
       <Box sx={viewerContainerStyle}>
-        <iframe style={viewerStyle} srcDoc={form}></iframe>
+        <iframe style={viewerStyle} srcDoc={htmlSrc}></iframe>
       </Box>
     </Box>
   );

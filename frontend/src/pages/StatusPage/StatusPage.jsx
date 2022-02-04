@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box, Paper, CircularProgress, Typography } from "@mui/material";
 import { defaultFont } from "../../theme";
 
 const StatusPage = () => {
   const [templateList, setTemplateList] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3002/templates/forms/pending")
+    fetch("https://formservice-aoy5jyfbiq-wl.a.run.app/templates/forms/pending")
       .then((response) => response.json())
       .then((data) => {
         data = data.data;
@@ -48,16 +48,16 @@ const StatusPage = () => {
   };
 
   return (
-    <Box sx={{ ...statusPageStyle }}>
+    <Box elevation={5} sx={{ ...statusPageStyle }}>
       {templateList.length > 0
         ? templateList.map((template) => {
             return (
-              <Box sx={{ ...processingItem }}>
+              <Paper elevation={5} sx={{ ...processingItem }}>
                 <CircularProgress />
                 <Typography sx={{ ...typographyStyle }}>
                   {template.templateName}: Processing...
                 </Typography>
-              </Box>
+              </Paper>
             );
           })
         : ""}

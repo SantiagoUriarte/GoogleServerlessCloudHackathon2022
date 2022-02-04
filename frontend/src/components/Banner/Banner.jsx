@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Avatar } from "@mui/material";
+import { Box, Paper, Typography, Avatar } from "@mui/material";
 import { theme } from "../../theme";
 import SearchBox from "../SearchBox/SearchBox";
 import { palette } from "@mui/system";
@@ -64,7 +64,7 @@ const Banner = ({
   }
   return (
     <Box sx={{ ...containerStyle }}>
-      <Box sx={{ ...bannerWrapperStyle, ...style }}>
+      <Paper elevation={5} sx={{ ...bannerWrapperStyle, ...style }}>
         <Box sx={{ ...typographyAndIconStyle }}>
           {image !== "" && (
             <Avatar sx={{ ...avatarStyle }} alt={alt} src={image} />
@@ -76,7 +76,7 @@ const Banner = ({
           <Icon />
         </Box>
         <SearchBox placeholder={placeholder}></SearchBox>
-      </Box>
+      </Paper>
     </Box>
   );
 };

@@ -7,20 +7,24 @@ import { Grid } from "@mui/material";
 const TemplateArea = () => {
   const [templateList, setTemplateList] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3002/templates/all")
+    fetch("https://formservice-aoy5jyfbiq-wl.a.run.app/templates/all")
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         data = data.data;
         const newTemplateList = [];
         data.forEach((template) => {
           newTemplateList.push({
             templateName: template.templateName,
             templateId: template["_id"],
+            lastUpdatedAt: new Date(template.updatedAt),
           });
         });
         setTemplateList(newTemplateList);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const templateAreaStyle = {
@@ -32,19 +36,17 @@ const TemplateArea = () => {
     textDecoration: "none",
   };
   return (
-    // <Box sx={templateAreaStyle}>
     <Grid container spacing={2} sx={{ ...templateAreaStyle }}>
       {templateList.length > 0
         ? templateList.map((template) => {
             return (
-              <Grid item xs={6}>
+              <Grid key={template.templateId} item xs={6}>
                 <TemplateCard
-                  key={template.templateId}
                   to={`/${template.templateId}/${template.templateName}`}
                   image={TemplateBurger}
                   alt="Template Burger"
                   header={template.templateName}
-                  description="In-N-Out Burgers"
+                  description={`Last updated: ${template.lastUpdatedAt.toLocaleDateString()}`}
                 ></TemplateCard>
               </Grid>
             );

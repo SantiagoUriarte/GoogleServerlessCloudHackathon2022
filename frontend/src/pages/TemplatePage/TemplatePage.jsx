@@ -18,7 +18,7 @@ const TemplatePage = () => {
   };
   return (
     <Box sx={templatePageStyle}>
-      <TemplateArea></TemplateArea>
+      <TemplateArea />
     </Box>
   );
 };

@@ -16,29 +16,47 @@ const showTemplatePageStyle = {
 
 export default function ShowTemplatePage() {
   const [open, setOpen] = useState(false);
+  const [template, setTemplate] = useState(null);
+  const [htmlFormString, setHtmlFormString] = useState("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [showModal, setShowModal] = useState(true);
   let params = useParams();
+
   useEffect(() => {
-    console.log(params.templateId);
+    fetch(
+      `https://formservice-aoy5jyfbiq-wl.a.run.app/templates/template/${params.templateId}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setTemplate(data);
+        const buf = Buffer.from(data.data[0].fileData.data);
+        setHtmlFormString(buf.toString());
+      });
     handleOpen();
   }, []);
 
   return (
     <Box sx={showTemplatePageStyle}>
-      <FormHeader title={params.templateName} />
-      <FormViewer />
-      <RecordBox />
+      {template ? (
+        <>
+          <FormHeader title={params.templateName} />
+          <FormViewer htmlSrc={htmlFormString} />
+          <RecordBox />
+        </>
+      ) : (
+        ""
+      )}
       <InstructionModal
         open={open}
         buttonText="CLOSE"
         handleClose={handleClose}
         header="How to create your SMART form"
       >
-        1. Tap the <strong>record button</strong>.<br />2. Start your response by saying the <strong>trigger word</strong> (def:
+        1. Tap the <strong>record button</strong>.<br />
+        2. Start your response by saying the <strong>trigger word</strong> (def:
         form category).
-        <br />3. Follow up saying the trigger with
+        <br />
+        3. Follow up saying the trigger with
         <strong> answering each field aloud</strong>.
       </InstructionModal>
     </Box>

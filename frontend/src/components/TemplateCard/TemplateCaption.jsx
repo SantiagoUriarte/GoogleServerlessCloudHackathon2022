@@ -7,7 +7,7 @@ const TemplateCaption = ({ image, header, description, alt }) => {
     display: "flex",
     alignItems: "center",
     gap: "8px",
-    borderRadius: "0 0 20px 20px",
+    borderRadius: "20px",
     padding: "8px",
     "@media (max-width: 700px)": {
       borderRadius: "0 0 10px 10px",
