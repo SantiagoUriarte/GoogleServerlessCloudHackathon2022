@@ -5,7 +5,7 @@ const express = require("express");
 const router = express.Router();
 const fetch = require("node-fetch");
 const axios = require("axios");
-const ApiResponse = require("../../formservice/src/Models/ApiResponse");
+const ApiResponse = require("../Models/ApiResponse");
 /* Route responsible for endpoints relating to speechAI */
 
 router.post("/startTranscriptionJob", async (req, res) => {

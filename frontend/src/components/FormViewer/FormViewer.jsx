@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
-import form from "./exampleFormRestaurant.html?raw";
 
 const formViewerStyle = {
   display: "flex",

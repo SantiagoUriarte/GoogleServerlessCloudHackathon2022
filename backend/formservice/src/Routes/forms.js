@@ -18,6 +18,7 @@ router.post("/template/:id", async (req, res) => {
     const pendingTemplate = new Template({
       templateName: newName,
       fileName: template.fileName,
+      triggerWords: template.triggerWords,
       status: "pending",
     });
 
@@ -32,51 +33,6 @@ router.post("/template/:id", async (req, res) => {
     console.log(err);
     return response.serverError500(err);
   }
-});
-
-// Create pending form
-router.post("/", (req, res) => {
-  const response = new ApiResponse(res);
-
-  console.log(req.files);
-
-  if (!req.files) {
-    // Return error
-    response.badRequest400("No files found");
-  }
-
-  let file = req.files.file;
-  let templateName = req.body.templateName;
-  let filename = file.name;
-  let filepath = "./tmp/" + filename;
-  file.mv(filepath);
-
-  fs.readFile(filepath, "utf8", (err, data) => {
-    if (err) {
-      console.log(err);
-      res.json({ message: err });
-    }
-
-    const template = new Template({
-      templateName: templateName,
-      fileName: filename,
-      status: "pending",
-    });
-
-    template.fileData.data = data;
-
-    template.save((err) => {
-      if (err) {
-        // return error
-        return response.serverError500(err);
-      }
-      // Return success
-      return response.success200(
-        "successfully created new pending form",
-        (data = [template])
-      );
-    });
-  });
 });
 
 // Get all pending forms

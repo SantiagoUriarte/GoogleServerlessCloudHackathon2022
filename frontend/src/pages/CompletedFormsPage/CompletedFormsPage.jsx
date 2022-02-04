@@ -62,6 +62,7 @@ export default function CompletedFormsPage() {
           return (
             <FormDisplayCard
               key={completedForm.templateId}
+              templateId={completedForm.templateId}
               title={completedForm.templateName}
               subtitle={`Last updated: ${completedForm.lastUpdatedAt?.toLocaleDateString()}`}
             />

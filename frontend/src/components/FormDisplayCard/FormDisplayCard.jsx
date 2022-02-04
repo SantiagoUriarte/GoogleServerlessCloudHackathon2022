@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Paper, IconButton, Typography } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { theme, lightSubtitleText } from "../../theme";
+import { Link } from "react-router-dom";
 
 const displayCardStyle = {
   display: "flex",
@@ -10,6 +11,7 @@ const displayCardStyle = {
   justifyContent: "space-between",
   padding: "20px 20px",
   borderRadius: "10px",
+  textDecoration: "none",
 };
 const textInfoContainerStyle = {
   "& .title": {
@@ -21,7 +23,12 @@ const textInfoContainerStyle = {
   },
 };
 const iconButtonStyle = {};
-export default function FormDisplayCard({ title, subtitle, style }) {
+export default function FormDisplayCard({
+  title,
+  templateId,
+  subtitle,
+  style,
+}) {
   return (
     <Paper
       sx={{
@@ -29,6 +36,8 @@ export default function FormDisplayCard({ title, subtitle, style }) {
         ...style,
       }}
       elevation={5}
+      component={Link}
+      to={`/${templateId}/${title}`}
     >
       <Box sx={textInfoContainerStyle}>
         <Typography className="title">{title}</Typography>

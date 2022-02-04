@@ -5,6 +5,7 @@ import FormHeader from "../../components/FormHeader/FormHeader";
 import FormViewer from "../../components/FormViewer/FormViewer";
 import InstructionModal from "../../components/InstructionModal/InstructionModal";
 import { useParams } from "react-router-dom";
+import binary from "bops";
 
 const showTemplatePageStyle = {
   flexGrow: 1,
@@ -29,8 +30,9 @@ export default function ShowTemplatePage() {
       .then((response) => response.json())
       .then((data) => {
         setTemplate(data);
-        const buf = Buffer.from(data.data[0].fileData.data);
-        setHtmlFormString(buf.toString());
+        const htmlData = data.data[0].fileData.data.data;
+        const decoder = new TextDecoder("utf-8");
+        setHtmlFormString(decoder.decode(new Uint8Array(htmlData)));
       });
     handleOpen();
   }, []);

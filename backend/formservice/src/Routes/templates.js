@@ -23,6 +23,7 @@ router.post("/", (req, res) => {
     response.badRequest400("No files sent");
   }
 
+  let triggerWords = req.body.triggerWords.split(",");
   let file = req.files.file;
   let templateName = req.body.templateName;
   let filename = file.name;
@@ -37,6 +38,7 @@ router.post("/", (req, res) => {
     const template = new Template({
       templateName: templateName,
       fileName: filename,
+      triggerWords: triggerWords,
       status: "template",
     });
 

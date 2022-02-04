@@ -44,18 +44,18 @@ export default function RecordBox({ style }) {
     const fd = new FormData();
     fd.append("file", audiofile);
 
-    fetch("http://127.0.0.1:3003/upload", {
-      headers: { Accept: "application/json" },
-      method: "POST",
-      body: fd,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // fetch("http://127.0.0.1:3003/upload", {
+    //   headers: { Accept: "application/json" },
+    //   method: "POST",
+    //   body: fd,
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
 
     // const newFormName = prompt("Recording saved! Enter new file name");
     // if (newFormName == null || newFormName == "") {
@@ -86,7 +86,11 @@ export default function RecordBox({ style }) {
         )}
       </Button>
 
-      <Typography sx={labelStyle}>Tap to record</Typography>
+      {record ? (
+        <Typography sx={labelStyle}>Tap to stop</Typography>
+      ) : (
+        <Typography sx={labelStyle}>Tap to record</Typography>
+      )}
     </Box>
   );
 }
