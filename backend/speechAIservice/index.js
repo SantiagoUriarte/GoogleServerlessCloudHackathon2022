@@ -225,6 +225,7 @@ app.post("/createMap", (req, res) => {
     let splitPhrase = keyPhrases[i].split(" ");
     let counter = 0;
     let index = 0;
+    let phraseFound = true;
     while (counter < splitPhrase.length) {
       if (
         splitPhrase[counter].toLowerCase() ===
@@ -238,8 +239,16 @@ app.post("/createMap", (req, res) => {
       if (counter > 0) {
         counter = 0;
       }
+      if (index === transcription.length) {
+        phraseFound = false;
+        break;
+      }
     }
-    phraseMap[keyPhrases[i]] = index - counter;
+    if (phraseFound) {
+      phraseMap[keyPhrases[i]] = index - counter;
+    } else {
+      delete phraseMap[keyPhrases[i]];
+    }
   }
 
   let sortedIndexes = [];
@@ -276,6 +285,8 @@ app.post("/createMap", (req, res) => {
 
     result[key] = section;
   }
+
+  console.log(result);
 
   res.status(200).json({
     statusCode: 200,
