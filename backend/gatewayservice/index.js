@@ -21,12 +21,6 @@ app.use(helmet()); // Set HTTP headers in responses so its secure
 // Set Routers
 app.use("/api/speechAI/", speechAIPath);
 
-// Login
-// Logout
-// Start Transcription
-// Get templates, pending forms, completed forms
-// Get template by Id
-
 //Status Check Route
 app.get("/status", (req, res) => {
   res.json({

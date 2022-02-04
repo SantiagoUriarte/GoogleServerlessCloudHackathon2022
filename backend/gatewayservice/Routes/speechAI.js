@@ -8,33 +8,6 @@ const axios = require("axios");
 const ApiResponse = require("../../formservice/src/Models/ApiResponse");
 /* Route responsible for endpoints relating to speechAI */
 
-router.get("/generateMap", async (req, res) => {
-  // Poll the API until job is finished
-  let jobName = req.data.name;
-  let jobFinished = false;
-  while (jobFinished === false) {
-    const statusResponse = await fetch(
-      `https://speechaiservice-aoy5jyfbiq-wl.a.run.app/status/${jobName}`
-    );
-    const statusJson = await statusResponse.json();
-
-    if (statusJson.message === "The transcription has finished being made") {
-      jobFinished = true;
-    }
-  }
-
-  // Get transcription
-  const transcriptionResponse = await fetch(
-    `https://speechaiservice-aoy5jyfbiq-wl.a.run.app/transcript/${jobName}`
-  );
-  const transcriptionJson = await transcriptionResponse.json();
-
-  const transcript = transcriptionJson.data.transcript;
-
-  // Run separation algorithm
-  const mapResponse = await fetch();
-});
-
 router.post("/startTranscriptionJob", async (req, res) => {
   const response = new ApiResponse(res);
   // Get request data
