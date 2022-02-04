@@ -2,7 +2,7 @@ import React from "react";
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-const SearchBox = ({ placeholder, input = false }) => {
+const SearchBox = ({ placeholder }) => {
   const searchBoxStyle = {
     backgroundColor: "#F7F7F7",
     borderRadius: 30,
@@ -23,15 +23,13 @@ const SearchBox = ({ placeholder, input = false }) => {
       sx={{
         ...searchBoxStyle,
       }}
-      InputProps={
-        input && {
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          ),
-        }
-      }
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <SearchIcon />
+          </InputAdornment>
+        ),
+      }}
     />
   );
 };

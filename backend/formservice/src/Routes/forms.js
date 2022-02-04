@@ -4,6 +4,7 @@ const Template = require("../Models/Template");
 const fileUpload = require("express-fileupload");
 const fs = require("fs");
 const ApiResponse = require("../Models/ApiResponse");
+const { response } = require("express");
 
 /* Route responsible for endpoints relating to pending/completed forms */
 
@@ -91,23 +92,21 @@ router.get("/completed", async (req, res) => {
 // Update form status
 router.patch("/status/:id", async (req, res) => {
   const response = new ApiResponse(res);
-  const formId = req.params.id;
-  const newStatus = req.query.newStatus.toLowerCase();
+  const templateId = req.params.id;
+  const newStatus = req.query.newStatus?.toLowerCase();
 
-  if (newStatus != "pending" || newStatus != "completed") {
+  if (newStatus != "pending" && newStatus != "completed") {
     response.badRequest400(
-      'Invalid status set. Please use only "pending" or "completed"'
+      `Invalid status set. Please use only 'pending' or 'completed'`
     );
   }
 
-  Template.findByIdAndUpdate(formId, { status: newStatus }, (err, data) => {
+  Template.findByIdAndUpdate(templateId, { status: newStatus }, (err, data) => {
     if (err) {
       response.serverError500(err);
     }
-    response.success200(data);
+    response.success200("Successfully updated form");
   });
 });
-
-// Write new data to form
 
 module.exports = router;

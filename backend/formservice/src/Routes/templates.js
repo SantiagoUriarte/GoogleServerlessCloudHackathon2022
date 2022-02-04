@@ -4,6 +4,7 @@ const Template = require("../Models/Template");
 const fileUpload = require("express-fileupload");
 const fs = require("fs");
 const ApiResponse = require("../Models/ApiResponse");
+const HTMLParser = require("node-html-parser");
 
 /* Route responsible for endpoints relating to templates */
 
@@ -93,6 +94,43 @@ router.delete("/template/:id", async (req, res) => {
   await Template.findByIdAndDelete(req.params.id);
 
   response.success200("Successfully deleted template");
+});
+
+// Write new data to template
+router.patch("/fileData/:id", async (req, res) => {
+  console.log("hit new write data");
+  const response = new ApiResponse(res);
+  const templateId = req.params.id;
+  const newFormValues = req.body.formValues; // list of key value pairs
+  const template = await Template.findById(templateId);
+  const templateHtmlString = template.fileData.data.toString();
+  const templateHtml = HTMLParser.parse(templateHtmlString);
+
+  console.log(templateHtmlString);
+
+  newFormValues.forEach((element) => {
+    try {
+      console.log(element);
+      templateHtml
+        .querySelector(element.inputId)
+        .setAttribute("value", element.value);
+      console.log("finished setting");
+    } catch (err) {
+      response.badRequest400("Given input Ids were incorrect");
+    }
+  });
+
+  const templateHtmlBuffer = Buffer.from(templateHtml.toString());
+  Template.findByIdAndUpdate(
+    templateId,
+    { fileData: { data: templateHtmlBuffer } },
+    (err, data) => {
+      if (err) {
+        response.serverError500("Could not save changes to Database");
+      }
+      response.success200("Successfully wrote new data");
+    }
+  );
 });
 
 module.exports = router;

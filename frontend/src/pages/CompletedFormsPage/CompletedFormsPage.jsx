@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import FormDisplayCard from "../../components/FormDisplayCard/FormDisplayCard";
+import Banner from "../../components/Banner/Banner";
+import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 
 const formsPageStyle = {
   "&::-webkit-scrollbar": {
     display: "none",
   },
   display: "flex",
-  flexDirection: "column",
+  flexWrap: "wrap",
   height: "100%",
+  width: "100%",
   overflow: "auto",
 };
 
@@ -16,6 +19,7 @@ const formDataCardListStyle = {
   display: "flex",
   flexDirection: "column",
   gap: 2,
+  width: "100%",
 };
 
 export default function CompletedFormsPage() {
@@ -31,17 +35,13 @@ export default function CompletedFormsPage() {
 
   return (
     <Box sx={formsPageStyle}>
-      <Typography
-        color="white"
-        variant="h5"
-        sx={{
-          marginBottom: "25px",
-          paddingBottom: "100px",
-          backgroundColor: "red",
-        }}
-      >
-        Blue Header
-      </Typography>
+      <Banner
+        Icon={FileUploadOutlinedIcon}
+        placeholder="Search all forms"
+        header="Forms"
+        description={"See all your completed SMART forms here"}
+        style={{ marginBottom: "24px", position: "sticky" }}
+      />
       <Box sx={formDataCardListStyle}>
         {completedForms.map((completedForm) => {
           return (
