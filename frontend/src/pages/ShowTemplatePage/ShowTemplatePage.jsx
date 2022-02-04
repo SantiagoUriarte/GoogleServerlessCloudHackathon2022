@@ -43,7 +43,7 @@ export default function ShowTemplatePage() {
         <>
           <FormHeader title={params.templateName} />
           <FormViewer htmlSrc={htmlFormString} />
-          <RecordBox />
+          <RecordBox template={template}/>
         </>
       ) : (
         ""

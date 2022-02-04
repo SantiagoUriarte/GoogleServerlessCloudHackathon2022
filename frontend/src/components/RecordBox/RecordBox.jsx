@@ -29,7 +29,7 @@ const labelStyle = {
   color: theme.palette.text.secondary,
 };
 
-export default function RecordBox({ style }) {
+export default function RecordBox({ style, template }) {
   const [record, setRecord] = useState(false);
 
   const toggleRecording = () => {
@@ -37,32 +37,56 @@ export default function RecordBox({ style }) {
   };
 
   const submitRecording = (recordingBlob) => {
+    const templateData = template.data[0];
     console.log("Recording finished");
-    const audiofile = new File([recordingBlob.blob], "audiofile.webm", {
+    console.log(templateData);
+    let audioFilename = templateData["_id"];
+    audioFilename += new Date().getTime().toString();
+    audioFilename += ".webm";
+
+    const audiofile = new File([recordingBlob.blob], audioFilename, {
       type: "audio/webm",
     });
     const fd = new FormData();
     fd.append("file", audiofile);
 
-    // fetch("http://127.0.0.1:3003/upload", {
-    //   headers: { Accept: "application/json" },
-    //   method: "POST",
-    //   body: fd,
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    // Upload Audio
+    fetch("https://speechaiservice-aoy5jyfbiq-wl.a.run.app/upload", {
+      headers: { Accept: "application/json" },
+      method: "POST",
+      body: fd,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const cloudBucketUri = data.url;
+        console.log(cloudBucketUri);
 
-    // const newFormName = prompt("Recording saved! Enter new file name");
-    // if (newFormName == null || newFormName == "") {
-    //   alert("Invalid name!");
-    // } else {
-    //   alert(`Transcription job started for file: ${newFormName}`);
-    // }
+        // Start Transcription
+        fetch(
+          "https://gatewayservice-aoy5jyfbiq-wl.a.run.app/api/speechAI/startTranscriptionJob",
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify({
+              newFormName: `${templateData.templateName} completed`,
+              templateId: templateData["_id"],
+              triggerWords: templateData.triggerWords,
+              audioCloudUri: cloudBucketUri,
+            }),
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <Box sx={{ ...recordBoxStyle, ...style }}>

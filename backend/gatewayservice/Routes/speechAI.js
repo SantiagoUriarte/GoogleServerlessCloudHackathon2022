@@ -14,13 +14,21 @@ router.post("/startTranscriptionJob", async (req, res) => {
   const newFormName = req.body.newFormName;
   let templateId = req.body.templateId;
   const triggerWords = req.body.triggerWords;
+  const audioCloudUri = req.body.audioCloudUri;
+  console.log(
+    "Received request with: ",
+    newFormName,
+    templateId,
+    triggerWords,
+    audioCloudUri
+  );
 
   // Create new pending form
   try {
     const pendingFormData = await axios.post(
       `${process.env.FORM_MICROSERVICE_BASE_URL}/templates/forms/template/${templateId}`,
       {
-        newName: newFormName,
+        templateName: newFormName,
       }
     );
 
@@ -37,12 +45,16 @@ router.post("/startTranscriptionJob", async (req, res) => {
   axios
     .post(`${process.env.AI_MICROSERVICE_BASE_URL}/startJob`, {
       data: {
-        uri: "gs://audio_files_pivot_pioneers_hackathon2022/audiofile.webm",
+        uri: audioCloudUri,
       },
     })
     .then((transcriptionJobResponse) => {
       const operationsName = transcriptionJobResponse.data.data.operationsName;
-      res.send(operationsName);
+      response.success200("Transcription job started", [
+        {
+          operationsName: operationsName,
+        },
+      ]);
       const intervalId = setInterval(() => {
         axios
           .get(

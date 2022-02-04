@@ -24,13 +24,11 @@ const formDataCardListStyle = {
 
 export default function CompletedFormsPage() {
   const [completedForms, setCompletedForms] = useState([
-    { templateId: 1, templateName: "Form 1", lastOpened: "7 mins ago" },
-    { templateId: 2, templateName: "Form 2", lastOpened: "10 mins ago" },
-    { templateId: 3, templateName: "Form 3", lastOpened: "3 mins ago" },
-    { templateId: 4, templateName: "Form 4", lastOpened: "15 mins ago" },
-    { templateId: 5, templateName: "Form 5", lastOpened: "2 mins ago" },
-    { templateId: 6, templateName: "Form 6", lastOpened: "30 mins ago" },
-    { templateId: 7, templateName: "Form 7", lastOpened: "9 mins ago" },
+    {
+      templateId: 1,
+      templateName: "No Completed Forms Yet",
+      lastUpdatedAt: new Date(),
+    },
   ]);
 
   useEffect(() => {
