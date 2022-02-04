@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
 
   fs.readFile(filepath, "utf8", (err, data) => {
     if (err) {
-      response.serverError500(err);
+      return response.serverError500(err);
     }
 
     const template = new Template({
@@ -46,10 +46,10 @@ router.post("/", (req, res) => {
     template.save((err) => {
       if (err) {
         // return error
-        response.serverError500(err);
+        return response.serverError500(err);
       }
       // Return success
-      response.success200("Successfully created template", (data = [template]));
+      return response.success200("Successfully created template", (data = [template]));
     });
   });
 });
@@ -65,7 +65,7 @@ router.get("/template/:id", async (req, res) => {
     response.notFound404("No template with Id found");
   }
 
-  response.success200(
+  return response.success200(
     (message = "Template with Id found"),
     (data = [template])
   );
@@ -79,10 +79,10 @@ router.get("/all", async (req, res) => {
   });
 
   if (templates.length == 0) {
-    response.successNoContent202("No non-completed templates found");
+    return response.successNoContent202("No non-completed templates found");
   }
 
-  response.success200(
+  return response.success200(
     (message = "Successfully found all non-completed templates"),
     (data = templates)
   );
@@ -93,7 +93,7 @@ router.delete("/template/:id", async (req, res) => {
   const response = new ApiResponse(res);
   await Template.findByIdAndDelete(req.params.id);
 
-  response.success200("Successfully deleted template");
+  return response.success200("Successfully deleted template");
 });
 
 // Write new data to template
@@ -126,9 +126,9 @@ router.patch("/fileData/:id", async (req, res) => {
     { fileData: { data: templateHtmlBuffer } },
     (err, data) => {
       if (err) {
-        response.serverError500("Could not save changes to Database");
+        return response.serverError500("Could not save changes to Database");
       }
-      response.success200("Successfully wrote new data");
+      return response.success200("Successfully wrote new data");
     }
   );
 });
