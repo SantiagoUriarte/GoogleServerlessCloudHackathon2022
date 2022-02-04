@@ -42,10 +42,10 @@ router.post("/", (req, res) => {
     template.save((err) => {
       if (err) {
         // return error
-        response.serverError500(err);
+        return response.serverError500(err);
       }
       // Return success
-      response.success200(
+      return response.success200(
         "successfully created new pending form",
         (data = [template])
       );
@@ -62,10 +62,10 @@ router.get("/pending", async (req, res) => {
   });
 
   if (templates.length == 0) {
-    response.successNoContent202("No pending templates found");
+    return response.successNoContent202("No pending templates found");
   }
 
-  response.success200(
+  return response.success200(
     (message = "Successfully retrieved pending templates"),
     (data = templates)
   );
@@ -80,10 +80,10 @@ router.get("/completed", async (req, res) => {
   });
 
   if (templates.length == 0) {
-    response.successNoContent202("No completed templates found");
+    return response.successNoContent202("No completed templates found");
   }
 
-  response.success200(
+  return response.success200(
     (message = "Successfully retrieved completed templates"),
     (data = templates)
   );
@@ -103,9 +103,9 @@ router.patch("/status/:id", async (req, res) => {
 
   Template.findByIdAndUpdate(templateId, { status: newStatus }, (err, data) => {
     if (err) {
-      response.serverError500(err);
+      return response.serverError500(err);
     }
-    response.success200("Successfully updated form");
+    return response.success200("Successfully updated form");
   });
 });
 
