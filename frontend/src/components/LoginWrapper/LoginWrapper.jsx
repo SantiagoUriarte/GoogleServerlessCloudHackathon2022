@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Axios from "axios";
 import { Box, Typography, TextField } from "@mui/material";
 import inFormLogo from "./inFormDefaultLogo.png";
-import InputBox from "../InputBox/InputBox";
 import LoginButton from "../LoginButton/LoginButton";
 import SearchBox from "../SearchBox/SearchBox";
 const LoginWrapper = () => {
@@ -16,20 +15,13 @@ const LoginWrapper = () => {
       withCredentials: true,
       url: "http://localhost:3001/login",
     }).then((res) => {
-      console.log(res)
-      window.location = "/"
+      console.log(res);
+      window.location = "/";
     });
   };
 
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  console.log(loginUsername);
-  const boxStyle = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-  };
   return (
     <Box>
       <Box
@@ -69,7 +61,14 @@ const LoginWrapper = () => {
           </Typography>
         </Box>
       </Box>
-      <Box sx={{ ...boxStyle }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
         <Box sx={{ paddingBottom: 1 }}>
           <Typography sx={{ fontSize: 13, paddingBottom: 1, color: "white" }}>
             Email or Phone Number
@@ -90,7 +89,9 @@ const LoginWrapper = () => {
         </LoginButton>
 
         <Box sx={{ paddingBottom: 2 }}>
-          <Typography sx={{ fontWeight: 400, fontSize: 11 }}>OR</Typography>
+          <Typography sx={{ fontWeight: 400, fontSize: 11, color: "white" }}>
+            OR
+          </Typography>
         </Box>
         <LoginButton sx={{ marginBottom: 2 }} google icon auth>
           Continue with Google

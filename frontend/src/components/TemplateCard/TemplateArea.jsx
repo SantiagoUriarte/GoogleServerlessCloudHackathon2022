@@ -38,18 +38,14 @@ const TemplateArea = () => {
         ? templateList.map((template) => {
             return (
               <Grid item xs={6}>
-                <Link
+                <TemplateCard
                   key={template.templateId}
-                  sx={{ ...linkStyle }}
                   to={`/${template.templateId}/${template.templateName}`}
-                >
-                  <TemplateCard
-                    image={TemplateBurger}
-                    alt="Template Burger"
-                    header={template.templateName}
-                    description="In-N-Out Burgers"
-                  ></TemplateCard>
-                </Link>
+                  image={TemplateBurger}
+                  alt="Template Burger"
+                  header={template.templateName}
+                  description="In-N-Out Burgers"
+                ></TemplateCard>
               </Grid>
             );
           })

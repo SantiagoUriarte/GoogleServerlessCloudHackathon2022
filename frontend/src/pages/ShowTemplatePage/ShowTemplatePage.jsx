@@ -36,10 +36,10 @@ export default function ShowTemplatePage() {
         handleClose={handleClose}
         header="How to create your SMART form"
       >
-        1. Tap the record button and fill out your smart form by answering each
-        field aloud. <br />
-        2. Start your response by saying the trigger word (e.g. category) for
-        the most accurate form transcription.
+        1. Tap the <strong>record button</strong>.<br />2. Start your response by saying the <strong>trigger word</strong> (def:
+        form category).
+        <br />3. Follow up saying the trigger with
+        <strong> answering each field aloud</strong>.
       </InstructionModal>
     </Box>
   );

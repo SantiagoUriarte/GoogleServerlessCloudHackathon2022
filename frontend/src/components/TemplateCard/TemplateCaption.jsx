@@ -19,6 +19,7 @@ const TemplateCaption = ({ image, header, description, alt }) => {
   };
   const templateCaptionHeaderStyle = {
     fontFamily: headerFont,
+    textDecoration: "none",
     fontSize: 16,
     fontWeight: 600,
     overflowWrap: "anywhere",
@@ -28,13 +29,14 @@ const TemplateCaption = ({ image, header, description, alt }) => {
   };
   const templateCaptionSubtitleStyle = {
     fontFamily: headerFont,
+    textDecoration: "none",
     fontSize: 13,
     fontWeight: 400,
     "@media (max-width: 700px)": {
       fontSize: 10,
     },
   };
-  
+
   return (
     <Box sx={{ ...templateCaptionStyle }}>
       <Box>

@@ -5,7 +5,7 @@ import { defaultFont } from "../../theme";
 const StatusPage = () => {
   const [templateList, setTemplateList] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3002/templates/pending/all")
+    fetch("http://localhost:3002/templates/forms/pending")
       .then((response) => response.json())
       .then((data) => {
         data = data.data;
@@ -24,6 +24,11 @@ const StatusPage = () => {
   const statusPageStyle = {
     display: "flex",
     flexDirection: "column",
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
+    overflow: "scroll",
+    width: "100%",
   };
   const processingItem = {
     display: "flex",

@@ -28,10 +28,12 @@ const SearchBox = ({ placeholder, input, onSubmitFunc, style }) => {
         onSubmitFunc(newValue);
       }}
       InputProps={{
-        startAdornment: (
+        startAdornment: input ? (
           <InputAdornment position="start">
             <SearchIcon />
           </InputAdornment>
+        ) : (
+          ""
         ),
       }}
     />

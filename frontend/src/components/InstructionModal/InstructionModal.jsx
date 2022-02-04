@@ -40,12 +40,16 @@ const InstructionModal = ({
   };
   const descriptionStyle = {
     fontFamily: headerFont,
+    textAlign: "left",
   };
   const headerWrapperStyle = {
     textAlign: "center",
     "@media screen and (max-width: 736px)": {
       width: 235,
     },
+  };
+  const dontShowStyle = {
+    textDecoration: "underline",
   };
   return (
     <Modal
@@ -69,6 +73,9 @@ const InstructionModal = ({
         >
           {buttonText}
         </Button>
+        <Typography sx={{ ...dontShowStyle }}>
+          Don't show me this again
+        </Typography>
       </Box>
     </Modal>
   );
