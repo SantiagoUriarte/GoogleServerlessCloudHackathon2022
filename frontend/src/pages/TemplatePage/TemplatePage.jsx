@@ -6,26 +6,18 @@ import TemplateBurger from "../../components/TemplateCard/Images/TemplateBurger.
 import { Box } from "@mui/material";
 import ProfilePic from "../../components/TemplateCard/Images/ProfilePic.png";
 import Banner from "../../components/Banner/Banner";
-import TemplateArea from "./TemplateArea";
+import TemplateArea from "../../components/TemplateCard/TemplateArea";
 import BottomNavBar from "../../components/BottomNavbar/BottomNavbar";
 const TemplatePage = () => {
   const templatePageStyle = {
-    width: "100%",
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
+    maxWidth: 700,
+    overflowY: "scroll",
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
   };
   return (
     <Box sx={templatePageStyle}>
-      <Banner
-        Icon={FileUploadOutlinedIcon}
-        placeholder="Search all templates"
-        header="Templates"
-        description={
-          "Select a template to create your SMART transcripted form."
-        }
-        style={{ marginBottom: "24px" }}
-      ></Banner>
       <TemplateArea></TemplateArea>
     </Box>
   );

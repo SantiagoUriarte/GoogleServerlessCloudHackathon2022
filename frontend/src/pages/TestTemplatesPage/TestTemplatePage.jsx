@@ -5,7 +5,7 @@ export default function TestTemplatePage() {
   const [templateList, setTemplateList] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3002/templates/all")
+    fetch("http://localhost:3002/templates/all")
       .then((response) => response.json())
       .then((data) => {
         data = data.data;

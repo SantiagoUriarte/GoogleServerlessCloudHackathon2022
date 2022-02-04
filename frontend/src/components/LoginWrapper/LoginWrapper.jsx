@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import Axios from "axios";
 import { Box, Typography, TextField } from "@mui/material";
 import inFormLogo from "./inFormDefaultLogo.png";
 import InputBox from "../InputBox/InputBox";
 import LoginButton from "../LoginButton/LoginButton";
+import SearchBox from "../SearchBox/SearchBox";
 const LoginWrapper = () => {
   const login = () => {
     Axios({
@@ -12,11 +14,16 @@ const LoginWrapper = () => {
         password: loginPassword,
       },
       withCredentials: true,
-      url: "http://localhost:4000/login",
-    }).then((res) => console.log(res));
+      url: "http://localhost:3001/login",
+    }).then((res) => {
+      console.log(res)
+      window.location = "/"
+    });
   };
+
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  console.log(loginUsername);
   const boxStyle = {
     display: "flex",
     justifyContent: "center",
@@ -67,21 +74,16 @@ const LoginWrapper = () => {
           <Typography sx={{ fontSize: 13, paddingBottom: 1, color: "white" }}>
             Email or Phone Number
           </Typography>
-          <InputBox
-            variant="text"
-            onSubmitFunc={setLoginUsername}
-            style={{ paddingBottom: 2 }}
-          ></InputBox>
+          <SearchBox onSubmitFunc={setLoginUsername}></SearchBox>
         </Box>
         <Box sx={{ paddingBottom: 1 }}>
           <Typography sx={{ fontSize: 13, paddingBottom: 1, color: "white" }}>
             Password
           </Typography>
-          <InputBox
-            variant="password"
+          <SearchBox
+            style={{ marginBottom: 2 }}
             onSubmitFunc={setLoginPassword}
-            style={{ paddingBottom: 2 }}
-          ></InputBox>
+          ></SearchBox>
         </Box>
         <LoginButton onClick={login} sx={{ marginBottom: 2 }}>
           CONTINUE

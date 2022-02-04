@@ -1,9 +1,8 @@
+import { withTheme } from "@emotion/react";
 import React from "react";
-import TemplateImage from "./Images/TemplateImage.png";
+import TemplateImage from "./Images/TemplateImagex4.png";
 const TemplatePreview = () => {
   const previewStyle = {
-    width: 144,
-    height: 136,
   };
   return (
     <img src={TemplateImage} style={{ ...previewStyle }} alt="Template"></img>

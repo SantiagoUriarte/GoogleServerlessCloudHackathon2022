@@ -10,7 +10,6 @@ import FileCopyOutlinedIcon from "@mui/icons-material/FileCopyOutlined";
 const containerStyle = {
   width: "100vw",
 };
-
 const navbarStyle = {
   display: "flex",
   justifyContent: "space-around",
@@ -57,7 +56,7 @@ export default function BottomNavbar({ style }) {
         <NavbarItem
           Icon={FileCopyOutlinedIcon}
           label="TEMPLATES"
-          to="/testTemplates"
+          to="/templates"
         />
         <NavbarItem
           Icon={LibraryAddCheckOutlinedIcon}

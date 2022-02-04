@@ -2,12 +2,11 @@ import React from "react";
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-const SearchBox = ({ placeholder }) => {
+const SearchBox = ({ placeholder, input, onSubmitFunc, style }) => {
   const searchBoxStyle = {
     backgroundColor: "#F7F7F7",
     borderRadius: 30,
-    maxWidth: 375,
-    width: "100%",
+    width: 311,
     height: 40,
     "& .MuiOutlinedInput-root": {
       borderRadius: 30,
@@ -22,6 +21,11 @@ const SearchBox = ({ placeholder }) => {
       id="outlined-start-adornment"
       sx={{
         ...searchBoxStyle,
+        ...style,
+      }}
+      onChange={(e) => {
+        const newValue = e.target.value;
+        onSubmitFunc(newValue);
       }}
       InputProps={{
         startAdornment: (
